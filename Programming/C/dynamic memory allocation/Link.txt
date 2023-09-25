@@ -1,0 +1,2 @@
+what is malloc, calloc, free, realloc?
+Link:- https://www.geeksforgeeks.org/dynamic-memory-allocation-in-c-using-malloc-calloc-free-and-realloc/

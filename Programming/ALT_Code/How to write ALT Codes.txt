@@ -1,0 +1,11 @@
+Step 1: Open a Text Editor first.
+
+Step 2: Must check that the "NUM_Lock" is Enable.
+
+Step 3: Then Hold the "ALT" Key.
+
+Step 4: (If you want to write 'A'[ASCII:-(65)]) then press "6" and press "5". Don't Release the "ALT" key before pressing Numeric Keys.
+
+step 5: Now Release the "ALT" key.
+
+----------------------Now Fun☺----------------------

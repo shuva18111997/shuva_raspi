@@ -1,0 +1,2 @@
+tutorial:- https://techatronic.com/st7789-raspberry-pi/
+github page:- https://github.com/pimoroni/st7789-python

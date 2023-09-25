@@ -1,0 +1,19 @@
+#define soil_moisture_sensor A0
+int sensor_reading = 0;
+#define Threshold 900
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(LED_BUILTIN, OUTPUT);
+}
+
+void loop() {
+  sensor_reading = analogRead(A0);
+    
+  Serial.println(sensor_reading);
+  
+  if(sensor_reading < Threshold)
+    digitalWrite(LED_BUILTIN, LOW);
+  else
+    digitalWrite(LED_BUILTIN, HIGH);
+}

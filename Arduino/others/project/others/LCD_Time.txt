@@ -1,0 +1,120 @@
+/* 
+ For a more detailed schematic, please see my blog: 
+ http://cjparish.blogspot.com/2010/01/controlling-lcd-display-with-shift.html 
+
+  The circuit: 
+ ---Shift Register 74HC595---
+ * SR Pin 14(Data) to Arduino pin 5
+ * SR Pin 12(Latch) to Arduino pin 6
+ * SR Pin 11(Clock) to Arduino pin 7
+ * SR Pin  8 to Ground
+ * SR Pin 16 to +5v
+ * SR Pin 13 to Ground
+ * SR Pin 10 to +5v
+ * -----Shift Reg to LCD--------
+ * SR Pin 15 to D7
+ * SR Pin 1  to D6
+ * SR Pin 2  to D5
+ * SR Pin 3  to D4
+ * SR Pin 6  to Enable
+ * SR Pin 7  to RS
+ -----LCD HD44780-------------
+ * Vss to Ground
+ * Vdd to +5V
+ * Vo  to 10k Wiper
+ * R/W to Ground
+ * 5v  to +5v
+ */
+// include the library code:
+#include <ShiftLCD.h>
+#include <Wire.h>
+#include <SPI.h>
+#include <TimeLib.h>
+#include <DS1307RTC.h>
+// initialize the library with the numbers of the interface pins
+ShiftLCD lcd(5, 7, 6);
+
+tmElements_t tm;
+
+void setup() {
+  SPI.begin();
+  if (RTC.read(tm))
+  {
+    lcd.println("Time Module OK");
+  }
+  lcd.begin(16, 2);
+  
+  delay(500);
+  
+}
+
+void loop() {
+  RTC.read(tm);
+  lcd.setCursor(0,0);
+  lcd.print("Time: ");
+  ////////////////Hour////////////////////
+  if(tm.Hour<10)
+  {
+  lcd.setCursor(6,0);
+  lcd.print(tm.Hour);
+  }
+  else
+  {
+    lcd.setCursor(6,0);
+  lcd.print(tm.Hour);
+  }
+  //////////////////////////////////////////
+  ////////////Minute///////////////////////
+  lcd.print(":");
+  if(tm.Minute<10)
+  {
+  lcd.setCursor(9,0);
+  lcd.print("0");
+  lcd.print(tm.Minute);
+  }
+  else
+  {
+  lcd.setCursor(9,0);
+  lcd.print(tm.Minute);
+  }
+  //////////////////////////////////////////
+  //////////////Second/////////////////////
+  lcd.print(":");
+  if(tm.Second<10)
+  {
+  lcd.setCursor(12,0);
+  lcd.print("0");
+  lcd.print(tm.Second);
+  }
+  else
+  {
+  lcd.setCursor(12,0);
+  lcd.print(tm.Second);
+  }
+  //////////////////////////////////////////
+  lcd.setCursor(0,1);
+  lcd.print("date: ");
+  if(tm.Day<10)
+  {
+    lcd.setCursor(6,1);
+    lcd.print("0");
+    lcd.print(tm.Day);
+  }
+  else
+  {
+  lcd.setCursor(6,1);
+  lcd.print(tm.Day);
+  }
+  lcd.print("/");
+  if(tm.Month<10)
+  {
+  lcd.setCursor(9,1);
+  lcd.print("0");
+  lcd.print(tm.Month);
+  }
+  else
+  {
+   lcd.setCursor(9,1);
+   lcd.print(tm.Month);
+  }
+}

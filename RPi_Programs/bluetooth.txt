@@ -1,0 +1,3 @@
+Bluetooth Tutorial: https://linuxhint.com/setup-bluetooth-raspberry-pi/
+
+Bluetoothctl Tutorial: https://linuxhint.com/connect-bluetooth-device-to-raspberry-pi-from-terminal/#:~:text=Raspberry%20Pi%20system%20allows%20users,device%20using%20its%20MAC%20address.

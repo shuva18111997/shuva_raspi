@@ -1,0 +1,6 @@
+##################It is only for Windows##################
+
+Type in “traceroute” along with a hostname or IP address.
+
+
+Command:- tracert google.com

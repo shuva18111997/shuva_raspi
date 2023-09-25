@@ -1,0 +1,18 @@
+Package Install location:- C:\Users\Shuva_Lapi\AppData\Roaming\Python\Python37\site-packages
+################################################
+Install any python package or librery :-
+
+python -m pip install <package_name>
+################################################
+Update pip version :-
+
+python -m pip install --upgrade pip
+################################################
+python pip store librery location command :-
+
+python -m pip list -v
+################################################
+python pip Update librery command :-
+
+pip install <package_name> -U
+################################################

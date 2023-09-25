@@ -1,0 +1,22 @@
+<html>
+<body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script>
+function FunctionON() {
+  $.get("https://shuvabratadey.000webhostapp.com/featch_data.php?Update=1&Light=true&Fan=true",
+                function (data) {
+                    alert("Data Loaded: " + data);
+                });
+}
+function FunctionOFF() {
+  $.get("https://shuvabratadey.000webhostapp.com/featch_data.php?Update=1&Light=false&Fan=false",
+                function (data) {
+                    alert("Data Loaded: " + data);
+                });
+}
+</script>
+<button onclick="FunctionON()">All ON</button>
+&nbsp&nbsp
+<button onclick="FunctionOFF()">All OFF</button>
+</body>
+</html>

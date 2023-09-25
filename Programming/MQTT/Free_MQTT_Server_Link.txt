@@ -1,0 +1,28 @@
+Create Host/Cluster Link:- https://console.hivemq.cloud/
+################################################################
+MQTT Dashboard Link:- http://www.hivemq.com/demos/websocket-client/
+################################################################
+	#####################################
+	#		   Login Credentials	    #
+	#		Email:- shuvaiot@gmail.com	#
+	#		Password:- shuva@123		#
+	#####################################
+Host:- e789a311b4404e388161254b2555c5fc.s2.eu.hivemq.cloud
+Port:- 8884
+Username:- shuvaiot
+Password:- shuva@123
+SSL:- True
+####################################################################################################################################
+	#####################################
+	#		Login Credentials			#
+	#	Email:- shuvabratadey@gmail.com	#
+	#	Password:- shuva@123			#
+	#####################################
+Host:- a834b9725dba4139972697a354553979.s2.eu.hivemq.cloud
+Port:- 8884
+Username:- shuva
+Password:- shuva@123
+SSL:- True
+##################################################################
+Host:- broker.mqttdashboard.com
+Port:- 8000

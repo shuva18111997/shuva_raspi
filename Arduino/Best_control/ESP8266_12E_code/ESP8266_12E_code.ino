@@ -1,0 +1,132 @@
+#include <ESP8266WiFi.h>
+#include <ESP8266WebServer.h>
+#include <FS.h>
+#include<math.h>
+#include <dht11.h>
+#define DHT11_PIN 13
+dht11 DHT;
+
+
+const char* ssid = "myWiFi";
+const char* password = "12345678";
+
+ESP8266WebServer server(80);
+
+String light="";
+String temp="";
+String hum="";
+void setup() {
+  // put your setup code here, to run once:
+  SPIFFS.begin();
+  Serial.begin(9600);
+  WiFi.mode(WIFI_AP);
+  WiFi.softAP(ssid, password);
+
+  pinMode(2, OUTPUT);
+  pinMode(A0, INPUT);
+  pinMode(13, INPUT);
+  server.on("/", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+  });
+  server.on("/pic.jpg", []() {
+    File file = SPIFFS.open("/pic.jpg", "r");
+    server.streamFile(file, "image/jpeg");
+    file.close();
+  });
+  server.on("/on1", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    digitalWrite(2, HIGH);
+  Serial.write("1");
+  });
+  server.on("/off1", []() {
+   File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    digitalWrite(2, LOW);
+    Serial.write("A");
+  });
+  server.on("/on2", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    
+    Serial.write("2");
+  });
+  server.on("/off2", []() {
+   File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    
+    Serial.write("B");
+  });
+  server.on("/on3", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+   
+    Serial.write("3");
+  });
+  server.on("/off3", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    
+    Serial.write("C");
+  });
+  server.on("/allon", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    
+    Serial.write("9");
+  });
+
+server.on("/alloff", []() {
+    File file = SPIFFS.open("/index.html", "r");
+    server.streamFile(file, "text/html");
+    file.close();
+    
+    Serial.write("I");
+  });
+  
+    server.on("/light", []() {
+  int sensorValue = analogRead(A0);
+  double dV = sensorValue;
+ double le = (dV/1023)*100; 
+  int level = le;
+ light="LIGHT LEVEL:"+String((int)level)+"%";
+  server.send(200,"text/plain",light);
+ });
+
+    server.on("/temp", []() {
+       DHT.read(DHT11_PIN);
+      float t = DHT.temperature;
+      temp="TEMPERATURE is:"+String((int)t)+"*C";
+      Serial.print("Temp:");
+      Serial.print(t);
+      Serial.println("*C");
+      server.send(200,"text/plain",temp);
+  });
+
+    server.on("/hum", []() {
+       DHT.read(DHT11_PIN);
+       float h = DHT.humidity;
+      hum="HUMIDITY:"+String((int)h)+"%";
+      Serial.print("HUMIDITY:");
+      Serial.print(h);
+      Serial.println("%");
+  server.send(200,"text/plain",hum);
+  });
+    
+  server.begin();
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  server.handleClient();
+  yield();
+}

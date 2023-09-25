@@ -1,0 +1,98 @@
+#include <SPI.h>
+#include <Ethernet.h>
+#include <RFID.h>
+ 
+#define SS_PIN 8
+#define RST_PIN 9
+
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+
+const char* host = "192.168.0.100";    // name address for Google (using DNS)
+
+IPAddress ip(192, 168, 0, 170);
+
+
+EthernetClient client;
+
+RFID rfid(SS_PIN,RST_PIN);
+String card;
+String mycard1="249,136,180,13,";
+String mycard2="136,4,123,226,";
+String mycard3="136,4,142,189,";
+void setup() {
+  // Open serial communications and wait for port to open:
+  Serial.begin(9600);
+  while (!Serial) {
+    ; // wait for serial port to connect. Needed for native USB port only
+  }
+SPI.begin();
+    rfid.init();
+
+  // start the Ethernet connection:
+  if (Ethernet.begin(mac) == 0) {
+    Serial.println("Failed to configure Ethernet using DHCP");
+    // try to congifure using IP address instead of DHCP:
+    Ethernet.begin(mac, ip);
+  }
+  // give the Ethernet shield a second to initialize:
+  delay(1000);
+  Serial.println("connecting...");
+  Serial.println("System start");
+}
+
+void loop()
+{
+  
+ if(rfid.isCard()){
+    
+        if(rfid.readCardSerial()){
+            for(int i=0;i<4;i++)
+            {
+              card+=rfid.serNum[i];
+              card+=',';
+            }
+        }
+        Serial.println(card);
+
+        if (client.connect(host, 80)) 
+        {
+        if(mycard1==card){
+          Serial.println("Access card 1");
+         client.print("GET http://192.168.0.100/att.php?roll=7");
+         client.println(" HTTP/1.0");
+         client.println("User-Agent: Arduino 1.0");
+         client.println();
+         client.stop();
+         delay(1000);
+        }
+        if(mycard2==card){
+          Serial.println("Access card 2");
+          client.print("GET http://localhost/att.php?roll=8");
+         client.println(" HTTP/1.0");
+         client.println("User-Agent: Arduino 1.0");
+         client.println();
+         client.stop();
+         delay(1000);
+        }
+        if(mycard3==card){
+          Serial.println("Access card 3");
+         client.print("GET http://192.168.0.100/att.php?roll=9");
+         client.println(" HTTP/1.0");
+         client.println("User-Agent: Arduino 1.0");
+         client.println();
+         client.stop();
+         delay(1000);
+        }
+        else
+        {
+         Serial.println("card not match"); 
+        }
+        card="\0";
+    }
+    else{
+    Serial.println("Connection Unuccessfull");
+     client.stop();
+    delay(1000);
+     }
+ }
+}

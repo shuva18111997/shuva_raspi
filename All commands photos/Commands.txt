@@ -1,0 +1,11 @@
+chmod -R 777 <folderName> --> To change the Full permission of[View Content,Change Content,Execute]
+			      Including Sub-Folders.
+ls
+lsusb
+-----------------------------
+gpio -g mode 3 out
+gpio -g write 3 1
+-----------------------------
+gpio -g blink 2
+-----------------------------
+sudo systemctl status/enable/disable/start/stop <process_name>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/iot"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="250dp"
+        android:paddingLeft="3dp">
+
+        <TextView
+            android:layout_width="400dp"
+            android:layout_height="150dp"
+            android:text="Heart Rate Monitor"
+            android:textColor="#ccff66"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="330dp"
+        android:paddingLeft="5dp">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="150dp"
+            android:text="Heart Rate:"
+            android:textColor="#33bbff"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="333dp"
+        android:paddingLeft="220dp">
+
+        <TextView
+            android:id="@+id/HeartBeat"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:text=""
+            android:textColor="#80dfff"
+            android:textSize="40dp"
+            android:textStyle="bold"/>
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/heartbeat"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

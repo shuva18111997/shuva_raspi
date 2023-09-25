@@ -1,0 +1,3 @@
+Door --> https://io.adafruit.com/api/v2/shuva/feeds/door?X-AIO-Key=56e0d91495c64a758fd29da65ddf3ade
+
+RGB_Led --> https://io.adafruit.com/api/v2/shuva/feeds/rgb?X-AIO-Key=56e0d91495c64a758fd29da65ddf3ade

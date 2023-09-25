@@ -1,0 +1,3 @@
+@reboot /usr/local/bin/gpio -g mode 2 out
+* * * * * /usr/local/bin/gpio -g toggle 2
+Link:- https://pimylifeup.com/cron-jobs-and-crontab/

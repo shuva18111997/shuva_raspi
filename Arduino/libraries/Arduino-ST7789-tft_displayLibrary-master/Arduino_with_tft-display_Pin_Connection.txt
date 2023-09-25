@@ -1,0 +1,8 @@
+	tft Display		Arduino
+		GND --> 	  GND
+		VCC -->		  5V
+		SCK -->		  pin-13
+		SDA -->		  pin-11
+		RES -->		  pin-9
+		DC -->		  pin-8
+		BLK -->		  vcc(Not required)

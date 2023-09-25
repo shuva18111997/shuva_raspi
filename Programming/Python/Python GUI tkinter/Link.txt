@@ -1,0 +1,5 @@
+Link:- https://www.geeksforgeeks.org/python-gui-tkinter/
+
+tkinter with arduino Link:- https://www.youtube.com/watch?v=1GShLwGMMFo&list=LL&index=7&t=12s
+
+Arduino tkinter example:- https://akuzechie.blogspot.com/2022/08/python-gui-for-arduino-analog-input.html

@@ -1,0 +1,34 @@
+//important methods of Lists and Dictionaries//
+//Supposse list name is "List" & dictionary name is "Dict"//
+
+1.For iterating thorough a dictionary
+for (Map.Entry<Integer,Integer> entry : Dict.entrySet())
+        {
+           //
+           //
+        } 
+
+2.Get key inside a dictionary(inside loop): 
+  entry.getKey();
+
+3.Get value inside a dictionary(inside loop):
+  entry.getValue();
+
+
+4. Get max & min value among all the keys:
+   Collections.max(Dict.values());
+   Collections.min(Dict.values());
+
+5. Get max and min among all elements in a List:
+   Collections.max(List);
+   Collections.max(List);
+
+6. Get frequency of an element in a list:
+   count = Collections.frequency(List,List.get(index));
+
+7. Get a sublist from a list
+    List<Integer> subl = List.subList(i, i+x);
+
+8. Copy an array to an list:
+   ArrayList<Integer> List = Arrays.asList(array);
+   Collections.addAll(List,array);

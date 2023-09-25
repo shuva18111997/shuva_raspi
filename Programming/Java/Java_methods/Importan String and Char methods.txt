@@ -1,0 +1,26 @@
+String-> s, integer->i, character->ch
+
+1.String to int conversion:
+  n=Integer.parseInt(String);
+
+2.int to String Conversion:
+  a. n.toString();
+  b. Integer.toString(n);
+
+3.int to character conversion:
+   (char)n;
+
+4.Character to int convertion:
+  Character.getNumericValue(ch);
+
+5.Spliting a string
+  s.substring(starting index, ending index)
+
+6. reverse a string s 
+   StringBuilder obj = new StringBuilder();
+   obj.append(s);  
+   String result=obj.reverse().toString();
+
+7.Replace characters with specific characters in a string
+  s=s.replaceAll("replacing char","char to be replaced with");
+   

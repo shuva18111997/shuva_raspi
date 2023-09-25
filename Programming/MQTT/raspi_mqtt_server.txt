@@ -1,0 +1,13 @@
+sudo apt-get install mosquitto
+sudo apt-get install mosquitto-clients
+#########################################
+sudo systemctl status mosquitto
+#########################################
+For Subscribe Topic:-
+mosquitto_sub -t /rpi/sample
+#########################################
+For Publish Topic:-
+mosquitto_pub -t /rpi/sample -m Hello
+#########################################
+For more information goto this Link:-
+https://randomnerdtutorials.com/how-to-install-mosquitto-broker-on-raspberry-pi/

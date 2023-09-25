@@ -1,0 +1,2 @@
+https://souvikmondaliot.000webhostapp.com/
+https://souvikmondaliot.000webhostapp.com/sensor.php?Temp=36&Hum=25&Moisture=10

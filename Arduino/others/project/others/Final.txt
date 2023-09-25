@@ -1,0 +1,141 @@
+#include <SPI.h>
+#include <Ethernet.h>
+#include <RFID.h>
+#include <Wire.h>
+#include <TimeLib.h>
+#include <DS1307RTC.h>
+#include <MFRC522.h>
+
+
+#define SS_PIN 8
+#define RST_PIN 9
+
+RFID rfid(SS_PIN, RST_PIN);
+MFRC522 nfc(SS_PIN, RST_PIN);
+
+String card;
+
+byte mac[] = { 0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED };
+
+const char* host = "192.168.0.100";
+
+IPAddress ip(192, 168, 0, 170);
+
+EthernetClient client;
+
+tmElements_t tm;
+int Time = 0;
+int Date = 0;
+
+int prev1 = 0;
+int prev2 = 0;
+int prev3 = 0;
+
+String mycard1 = "249,136,180,13,";
+String mycard2 = "136,4,123,226,";
+String mycard3 = "136,4,142,189,";
+
+void setup() {
+
+  Serial.begin(9600);
+  SPI.begin();
+  rfid.init();
+  nfc.begin();
+
+
+  if (RTC.read(tm))
+  {
+    Serial.println("Time Module is OK");
+  }
+  uint8_t version = nfc.getFirmwareVersion();
+  if (! version) {
+    Serial.print("Didn't find MFRC522 board.");
+  }
+  else
+  {
+    Serial.print("Found chip MFRC522 ");
+    Serial.print("Firmware ver. 0x");
+    Serial.println(version, HEX);
+    if (version != 0x92)
+    {
+      Serial.println("Check your connection");
+      while (1);
+    }
+  }
+  if (Ethernet.begin(mac) == 0)
+  {
+    Ethernet.begin(mac, ip);
+  }
+  delay(500);
+  Serial.println("connecting...");
+  Serial.println("System start");
+}
+
+void loop() {
+  Time = (tm.Hour * 100) + tm.Minute;
+  Date = tm.Day;
+  
+  if (Time >= 815 && Time <= 1055)
+  {
+    if (rfid.isCard()) {
+
+      if (rfid.readCardSerial()) {
+        for (int i = 0; i < 4; i++)
+        {
+          card += rfid.serNum[i];
+          card += ',';
+        }
+      }
+
+      if (mycard1 == card && prev1 != Date) {
+        Serial.println("Access card 1");
+        Serial.print("card uid is ");
+        Serial.println(card);
+        client_print(7);
+        prev1 = Date;
+        delay(1000);
+      }
+      if (mycard2 == card && prev2 != Date) {
+        Serial.println("Access card 2");
+        Serial.print("card uid is ");
+        Serial.println(card);
+        client_print(8);
+        prev2 = Date;
+        delay(1000);
+      }
+      if (mycard3 == card && prev3 != Date) {
+        Serial.println("Access card 3");
+        Serial.print("card uid is ");
+        Serial.println(card);
+        client_print(9);
+        prev3 = Date;
+        delay(1000);
+      }
+      card = "\0";
+    }
+  }
+  else
+  {
+    Serial.println("Time Expire");
+  }
+}
+//////////////////////////////////////////////////////////////////////////
+void client_print(int roll)
+{
+  if (client.connect(host, 80))
+  {
+    client.print("GET http://192.168.0.100/att.php?roll=");
+    client.print(String(roll));
+    client.println(" HTTP/1.0");
+    client.println("User-Agent: Arduino 1.0");
+    client.println();
+    client.stop();
+    delay(1000);
+  }
+  else {
+    Serial.println("please touch your card");
+    client.stop();
+  }
+}
+
+

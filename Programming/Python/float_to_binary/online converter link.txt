@@ -1,0 +1,3 @@
+For 64 bit:- https://www.ultimatesolver.com/en/ieee-754
+
+For 32 bit:- https://www.h-schmidt.net/FloatConverter/IEEE754.html

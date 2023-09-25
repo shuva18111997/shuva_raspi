@@ -1,0 +1,35 @@
+#################################install sqlite3 for PHP################################################
+1.First of all check the php version using <?php phpinfo(); ?>
+2.sudo apt-get install php7.4-sqlite
+
+
+Link:- https://www.getastra.com/kb/knowledgebase/how-to-install-sqlite-for-php-on-my-apache-nginx-server/
+##############################################################################################
+
+###################################Enable php errors to change this line in /etc/php/7.4/apache2/php.ini###########################################
+display_errors=On
+
+; The display of errors which occur during PHP's startup sequence are handled
+; separately from display_errors. We strongly recommend you set this to 'off'
+; for production servers to avoid leaking configuration details.
+; Default Value: On
+; Development Value: On
+; Production Value: Off
+; http://php.net/display-startup-errors
+display_startup_errors=On
+
+; Besides displaying errors, PHP can also log errors to locations such as a
+; server-specific log, STDERR, or a location specified by the error_log
+; directive found below. While errors should not be displayed on productions
+; servers they should still be monitored and logging is a great way to do that.
+; Default Value: Off
+; Development Value: On
+; Production Value: On
+; http://php.net/log-errors
+log_errors=On
+
+##############################################################################################
+#################################install sqlite3 GUI##########################################
+sudo apt-get install sqlite3 -y
+sudo apt-get install sqlitebrowser -y
+##############################################################################################
