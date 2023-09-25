@@ -35,3 +35,5 @@ sudo chmod +x /home/pi/Desktop/kill_script.sh
 sudo cp /home/pi/Documents/Initial_RPi/esptool /usr/bin
 sudo chmod +x /usr/bin/esptool
 sudo sed -i '$s/.*/sudo python \/home\/pi\/Documents\/RPi_Programs\/RaspberryPi_TFT_Display\/WiFi_Connection.py \&\n\nexit 0/' /etc/rc.local
+sudo raspi-config nonint do_composite 0
+sudo reboot
