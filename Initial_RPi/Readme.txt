@@ -16,4 +16,6 @@ sudo rm -r /home/pi/shuva_raspi
 
 just run the file using this command ==> cd /home/pi/Documents/Initial_RPi and then type sudo chmod +x run.sh and ./run.sh
 
-11. To give WiFi_Credentials:- sudo raspi-config nonint do_wifi_ssid_passphrase shuva shuva@123
+11. Turn On WiFi:- sudo ifconfig wlan0 up
+
+12. To give WiFi_Credentials:- sudo raspi-config nonint do_wifi_ssid_passphrase shuva shuva@123
