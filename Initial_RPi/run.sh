@@ -4,7 +4,7 @@ cd WiringPi
 ./build
 cd
 sudo rm -r WiringPi
-sed -i 's/http:\/\/raspbian.raspberrypi.org\/raspbian/http:\/\/mirror.aarnet.edu.au\/pub\/raspbian\/raspbian/' /etc/apt/sources.list
+sudo sed -i 's/http:\/\/raspbian.raspberrypi.org\/raspbian/http:\/\/mirror.aarnet.edu.au\/pub\/raspbian\/raspbian/' /etc/apt/sources.list
 sudo apt-get upgrade -y
 sudo apt-get update -y
 sudo apt-get install xrdp samba samba-common-bin gparted minicom putty screen i2c-tools cmake qbittorrent mosquitto mosquitto-clients apache2 php7.4 libapache2-mod-php7.4 php7.4-mbstring php7.4-mysql php7.4-curl php7.4-gd php7.4-zip php7.4-sqlite sqlite3 sqlitebrowser libmono-system-windows-forms4.0-cil avrdude gcc-avr -y
