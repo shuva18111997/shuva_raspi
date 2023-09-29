@@ -27,7 +27,7 @@ sudo cp /home/pi/Documents/Initial_RPi/AVRDUDESS.sh /home/pi/Desktop
 sudo chmod +x /home/pi/Desktop/AVRDUDESS.sh
 sudo raspi-config nonint do_vnc 0
 sudo raspi-config nonint do_spi 0
-#sudo raspi-config nonint do_i2c 0
+sudo raspi-config nonint do_i2c 0
 sudo pip install --upgrade pip
 sudo pip install st7789 esptool esp-idf-monitor
 sudo cp /home/pi/Documents/Initial_RPi/kill_script.sh /home/pi/Desktop
